@@ -30,6 +30,17 @@ In the Vernam cipher algorithm, we take a key to encrypt the plain text whose le
 3) No Pattern Recognition: Unlike other encryption algorithms, the Vernam cipher does not produce a pattern of ciphertext that can be used to break the code. Each character of the ciphertext is encrypted independently.
 4) Simple Algorithm: Both the encryption and decryption algorithms are simple and involve a bitwise XOR operation. This simplicity can be an advantage in some situations.
 
+### Atbash cipher:
+Atbash cipher is a substitution cipher with just one specific key where all the letters are reversed that is A to Z and Z to A. It was originally used to encode the Hebrew alphabets but it can be modified to encode any alphabet. The Atbash cipher is a particular type of monoalphabetic cipher formed by taking the alphabet (or abjad, syllabary, etc.) and mapping it to its reverse, so that the first letter becomes the last letter, the second letter becomes the second to last letter, and so on. For example, the Latin alphabet would work like this:
+![image](https://github.com/VelkyGecko/Project-DE1---Implementation-of-Basic-Ciphers/assets/166106704/b06f91f6-b220-42f6-8107-bbd30441a262)
+
+#### Advantages of the Atbash Cipher
+Since its just an affine cipher with both a = 25 = b we don’t need to write separate functions for encryption and decryption. We can re-use the same function for both purposes. 
+
+
+
+
+
 
 
 
@@ -40,6 +51,8 @@ https://www.geeksforgeeks.org/vernam-cipher-in-cryptography/
 https://en.wikipedia.org/wiki/Caesar_cipher
 
 https://www.geeksforgeeks.org/caesar-cipher-in-cryptography/?ref=leftbar-rightbar
+
+https://www.geeksforgeeks.org/implementing-atbash-cipher/?ref=ml_lbp
 
 
 
