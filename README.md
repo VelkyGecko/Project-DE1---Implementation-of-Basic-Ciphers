@@ -25,6 +25,7 @@ In the Vernam cipher algorithm, we take a key to encrypt the plain text whose le
 
 ## References 
 https://www.geeksforgeeks.org/vernam-cipher-in-cryptography/
+
 https://en.wikipedia.org/wiki/Caesar_cipher
 
 
