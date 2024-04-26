@@ -40,6 +40,7 @@ Since its just an affine cipher with both a = 25 = b we don’t need to write se
 
 
 ## Software description and tests
+![image](https://github.com/VelkyGecko/Project-DE1---Implementation-of-Basic-Ciphers/assets/166106704/5a145e55-31ab-4cf6-bc5a-ed6fb4906331)
 
 
 
