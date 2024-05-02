@@ -1,21 +1,24 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 entity vernam is
     Port ( en : in STD_LOGIC; --Input signal that enables the cipher function. When high ('1'), the cipher is enabled.
-           input : in STD_LOGIC_VECTOR (5 downto 0); --Input data for encryption or ciphertext for decryption. It's a 6-bit vector.
-           output : out STD_LOGIC_VECTOR (5 downto 0)); --Output data after encryption or decrypted plaintext. Also a 6-bit vector.
+           input : in STD_LOGIC_VECTOR (4 downto 0); --Input data for encryption or ciphertext for decryption. It's a 5-bit vector.
+           output : out STD_LOGIC_VECTOR (4 downto 0)); --Output data after encryption or decrypted plaintext. Also a 5-bit vector.
 end vernam;
 
 architecture Behavioral of vernam is
-constant key : STD_LOGIC_VECTOR (5 downto 0) := "101101"; --A constant 6-bit vector representing the encryption key. In this code, the key is set to "101101". The key should ideally be as long as the plaintext and randomly generated.
+constant key : STD_LOGIC_VECTOR (4 downto 0) := "00010"; --A constant 5-bit vector representing the encryption key. In this code, the key is set to "00010". The key should ideally be as long as the plaintext and randomly generated.
 begin
     process(en, input)
+    variable temp: unsigned(4 downto 0);
     begin
         if en = '1' then --If en is high ('1'), indicating the cipher operation is enabled.
-            output <= input XOR key; --The input is XORed with the predefined key.
+            temp:=unsigned(input) xor unsigned(key); --The input is XORed with the predefined key.
+            output <= std_logic_vector(temp);
         else --If en is low ('0'), indicating the cipher operation is not enabled.
-            output <= (others => '0'); --The output is set to all zeros, effectively passing through the input unchanged.
+            output <= input; --The output is set to all zeros, effectively passing through the input unchanged.
         end if;
     end process;
 end Behavioral;
