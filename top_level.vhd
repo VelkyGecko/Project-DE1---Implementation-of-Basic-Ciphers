@@ -3,9 +3,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.numeric_std.all;
 
 entity top_level is
-    Port ( BTNC : in std_logic;
+    Port ( BTND : in std_logic;
            BTNL : in std_logic;
-           --BTNU : in std_logic;
+           CLK100MHZ : in std_logic;
            BTNR : in std_logic;
            SW : in STD_LOGIC_VECTOR (5 downto 0);
            LED : out STD_LOGIC_VECTOR (5 downto 0);                          
@@ -24,10 +24,7 @@ architecture Behavioral of top_level is
     signal decode1: std_logic_vector(4 downto 0);
     signal decode2: std_logic_vector(4 downto 0);
     signal decode3: std_logic_vector(4 downto 0);
-    signal output0: std_logic_vector(6 downto 0);
-    signal output1: std_logic_vector(6 downto 0);
-    signal output2: std_logic_vector(6 downto 0);
-    signal output3: std_logic_vector(6 downto 0);
+    signal output0: std_logic_vector(27 downto 0);
 
     component atbash is
         Port ( en : in STD_LOGIC; --Input signal that enables the cipher function. When high ('1'), the cipher is enabled.
@@ -58,25 +55,25 @@ begin
 decoder0 : component bin2seg
 port map ( clear => '0', 
            input => SW(4 downto 0),
-           output => output0 
+           output => output0(6 downto 0) 
 );
 
 decoder1 : component bin2seg
 port map ( clear =>  '0', 
            input => decode1,
-           output => output1 
+           output => output0(13 downto 7)
 );
 
 decoder2 : component bin2seg
 port map ( clear => '0', 
            input => decode2,
-           output => output2 
+           output => output0(20 downto 14) 
 );
 
 decoder3 : component bin2seg
 port map ( clear => '0', 
            input => decode3,
-           output => output3
+           output => output0(27 downto 21)
 );
 
 cipherL : component atbash
@@ -91,58 +88,50 @@ port map ( input => SW (4 downto 0),
            en => BTNR
 );
 
-cipherU : component caesar
+cipherC : component caesar
 port map ( input => SW (4 downto 0),
            output => decode3,
-           en => BTNC,
+           en => '1',
            en_de_cryption => SW(5)
 );
-
-display: process (BTNL, BTNC, BTNR)
-    begin
-        if (BTNL) ='1' then
-            AN <= "01110111";
-            CA <= output1(6);
-            CB <= output1(5);
-            CC <= output1(4);
-            CD <= output1(3);
-            CE <= output1(2);
-            CF <= output1(1);
-            CG <= output1(0);
-        end if;
-        if (BTNC) = '1' then
-            AN <= "01111011";
-            CA <= output2(6);
-            CB <= output2(5);
-            CC <= output2(4);
-            CD <= output2(3);
-            CE <= output2(2);
-            CF <= output2(1);
-            CG <= output2(0);
-        end if;
-        if (BTNR) = '1' then
-            AN <= "01111101";
-            CA <= output3(6);
-            CB <= output3(5);
-            CC <= output3(4);
-            CD <= output3(3);
-            CE <= output3(2);
-            CF <= output3(1);
-            CG <= output3(0);
-        end if;
-        if (BTNR)='0' and (BTNL)='0' and (BTNC)='0' then
-            AN <= "01111101";
-            CA <= output0(6);
-            CB <= output0(5);
-            CC <= output0(4);
-            CD <= output0(3);
-            CE <= output0(2);
-            CF <= output0(1);
-            CG <= output0(0);
-        end if;
-    end process display;
-
+AN<="01110111";
 DP <= '1';
 LED<= SW;
---AN <= "00001111";
+display: process (CLK100MHZ)
+    begin
+        if (BTNL='1') and (BTND='0') and (BTNR='0') then
+            CA<=output0(13);
+            CB<=output0(12);
+            CC<=output0(11);
+            CD<=output0(10);
+            CE<=output0(9);
+            CF<=output0(8);
+            CG<=output0(7);
+        elsif (BTNL='0') and (BTND='0') and (BTNR='1') then
+            CA<=output0(20);
+            CB<=output0(19);
+            CC<=output0(18);
+            CD<=output0(17);
+            CE<=output0(16);
+            CF<=output0(15);
+            CG<=output0(14);
+        elsif (BTNL='0') and (BTND='1') and (BTNR='0') then
+            CA<=output0(27);
+            CB<=output0(26);
+            CC<=output0(25);
+            CD<=output0(24);
+            CE<=output0(23);
+            CF<=output0(22);
+            CG<=output0(21);
+        else 
+            CA<=output0(6);
+            CB<=output0(5);
+            CC<=output0(4);
+            CD<=output0(3);
+            CE<=output0(2);
+            CF<=output0(1);
+            CG<=output0(0);
+        end if;
+
+    end process display;
 end Behavioral;
