@@ -9,14 +9,14 @@ architecture tb of tb_caesar is
     component caesar
         port (en             : in std_logic;
               en_de_cryption : in std_logic;
-              input          : in std_logic_vector (5 downto 0);
-              output         : out std_logic_vector (5 downto 0));
+              input          : in std_logic_vector (4 downto 0);
+              output         : out std_logic_vector (4 downto 0));
     end component;
 
     signal en             : std_logic;
     signal en_de_cryption : std_logic;
-    signal input          : std_logic_vector (5 downto 0);
-    signal output         : std_logic_vector (5 downto 0);
+    signal input          : std_logic_vector (4 downto 0);
+    signal output         : std_logic_vector (4 downto 0);
 
 begin
 
@@ -31,27 +31,27 @@ begin
         -- EDIT Adapt initialization as needed
         en <= '1';
         en_de_cryption <= '1';
-        input <= "000000"; --a =>
+        input <= "00000"; --a =>
         wait for 50 ns;
-        input <= "000001"; --b =>
+        input <= "00001"; --b =>
         wait for 100 ns;
-        input <= "000101"; --f =>
+        input <= "00101"; --f =>
         wait for 100 ns;
-        input <= "000111"; --h =>
+        input <= "00111"; --h =>
         wait for 100 ns;
-        input <= "001101"; --n =>
+        input <= "01101"; --n =>
         wait for 100 ns;
         
         en_de_cryption <= '0';
-        input <= "000000"; --a =>
+        input <= "00000"; --a =>
         wait for 50 ns;
-        input <= "000001"; --b =>
+        input <= "00001"; --b =>
         wait for 100 ns;
-        input <= "000101"; --f =>
+        input <= "00101"; --f =>
         wait for 100 ns;
-        input <= "000111"; --h =>
+        input <= "00111"; --h =>
         wait for 100 ns;
-        input <= "001101"; --n =>
+        input <= "01101"; --n =>
         wait for 100 ns;
 
 
