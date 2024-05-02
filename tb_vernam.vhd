@@ -35,6 +35,8 @@ begin
         wait for 100 ns;
         input <= "000111"; --h =>f
         wait for 100 ns;
+        input <= "001101"; --n =>p
+        wait for 100 ns;
 
         wait;
     end process;
