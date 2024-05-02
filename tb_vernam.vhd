@@ -27,13 +27,13 @@ begin
     begin
         -- EDIT Adapt initialization as needed
         en <= '1';
-        input <= "000000";
+        input <= "000000"; --a =>c
         wait for 50 ns;
-        input <= "000001";
+        input <= "000001"; --b =>d
         wait for 100 ns;
-        input <= "000101";
+        input <= "000101"; --f =>h
         wait for 100 ns;
-        input <= "000111";
+        input <= "000111"; --h =>f
         wait for 100 ns;
 
         wait;
