@@ -46,11 +46,12 @@ Since its just an affine cipher with both a = 25 = b we don’t need to write se
 
 
 ## Software description and testbenches
+We use this alphabeth to display different letters. 
 ![image](https://github.com/VelkyGecko/Project-DE1---Implementation-of-Basic-Ciphers/assets/166106704/5a145e55-31ab-4cf6-bc5a-ed6fb4906331)
 
-Testbench for atbash cipher. Input is letter "a" and output is letter "z", for "b" the output is "y" and so on. We can see the program is working correctly. 
+Testbench for atbash cipher. Input is letter "a" and output is letter "z", for "b" the output is "y" and so on. We can see the program is working correctly.
+Other testbenches are working in the same way but for different cipher. 
 ![image](https://github.com/VelkyGecko/Project-DE1---Implementation-of-Basic-Ciphers/assets/166106704/ad358f7c-f12b-490f-ba1a-ceff06d65e47)
-
 
 
 
