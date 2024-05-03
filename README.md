@@ -55,7 +55,7 @@ Other testbenches are working in the same way but for different cipher.
 ![image](https://github.com/VelkyGecko/Project-DE1---Implementation-of-Basic-Ciphers/assets/166106704/ad358f7c-f12b-490f-ba1a-ceff06d65e47)
 
 
-##Future upgrades
+## Future upgrades
 We want to update our programme to show color when using one of the ciphers. For example if you choose atbash cipher, the red LED will be turned on. And use this idea for the rest of the ciphers.
 
 
